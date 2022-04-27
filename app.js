@@ -1,29 +1,69 @@
-//Dummy array for student grades. Sort it from lowest score to highest score.
-let studentGrades = [34, 77, 89, 90, 92, 43, 23, 100, 100, 98, 27, 57, 98, 70, 72];
-studentGrades.sort();
+let students = [
+    {
+    "firstName": "Alex",
+    "lastName": "Valdez",
+    "assignment1": 34  
+  },
+  {
+    "firstName": "Billy",
+    "lastName": "Bob",
+    "assignment1": 68  
+  },
+  {
+    "firstName": "Steven",
+    "lastName": "Seagull",
+    "assignment1": 78  
+  },
+  {
+    "firstName": "Kevin",
+    "lastName": "Nguyen",
+    "assignment1": 88 
+  },
+  {
+    "firstName": "Bob",
+    "lastName": "Lazar",
+    "assignment1": 29  
+  },
+  {
+    "firstName": "Kendrick",
+    "lastName": "Lamar",
+    "assignment1": 99  
+  },
+  {
+    "firstName": "Hugh",
+    "lastName": "Mungus",
+    "assignment1": 15  
+  }
+];
+
+//Sort students from least to greatest score.
+students.sort((a, b) => {
+    return a.assignment1 - b.assignment1;
+});
 
 let group1 = [];
 let twoDimensions = [];
 
 //Group top student with bottom two students if class size is uneven.
-if(studentGrades.length % 2 != 0){
-	group1.push(studentGrades.shift());
-  group1.push(studentGrades.shift());
-  group1.push(studentGrades.pop());
+if(students.length % 2 != 0){
+    console.log("Arr is odd!");
+    group1.push(students.shift());
+  group1.push(students.shift());
+  group1.push(students.pop());
   twoDimensions.push(group1);
 }
 
 //Spread original array and reverse it.
-let reversedArr = [...studentGrades];
+//Greatest to least.
+let reversedArr = [...students];
 reversedArr.reverse();
 
-//Pop and push first element of each array into another sepearte array. Then push that array into the 2D array.
-for(let x of studentGrades){
-	let tempArr = [];
-  tempArr.push(studentGrades.pop());
+//Create groupings
+for(let x of students){
+  let tempArr = [];
+  tempArr.push(students.pop());
   tempArr.push(reversedArr.pop());
   twoDimensions.push(tempArr);
 }
 
-//Print groupings
 console.log(twoDimensions);
